@@ -1,13 +1,15 @@
 const express = require("express");
-const CORS = require("cors");
+const cors = require("cors");
 
+const initializeDatabase = require("./db");
 const EventRouter = require("./routers/Event.router");
 const VolunteerRouter = require("./routers/Volunteer.router");
 
+initializeDatabase();
 const app = express();
 
 app.use(express.json());
-app.use(CORS());
+app.use(cors());
 
 app.use("/events", EventRouter);
 app.use("/volunteers", VolunteerRouter);
